@@ -6,7 +6,14 @@ const useUI = () => {
     const uiStore = useUIStore()
 
     return {
-        leftDrawerOpen: computed(() => uiStore.isSideMenuOpen),
+        leftDrawerOpen: computed({
+            get() {
+                return uiStore.isSideMenuOpen
+            },
+            set() {
+                uiStore.toggleSideMenu()
+            }
+        }),
         toggleLeftDrawer: () => {
             uiStore.toggleSideMenu()
         }
